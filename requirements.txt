@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+ultralytics
+requests
+streamlit
+pandas
+plotly
+pytest
+httpx

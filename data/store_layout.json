@@ -1,0 +1,93 @@
+{
+  "store_id": "STORE_BLR_002",
+  "cameras": [
+    {
+      "camera_id": "CAM_ENTRY_01",
+      "type": "entry"
+    },
+    {
+      "camera_id": "CAM_ENTRY_02",
+      "type": "entry"
+    },
+    {
+      "camera_id": "CAM_ZONES_01",
+      "type": "zones",
+      "zones": [
+        {
+          "zone_id": "MAKEUP",
+          "coords": [
+            0,
+            150,
+            700,
+            1200
+          ]
+        },
+        {
+          "zone_id": "SKIN_CARE",
+          "coords": [
+            700,
+            150,
+            1400,
+            1200
+          ]
+        },
+        {
+          "zone_id": "HAIR_CARE",
+          "coords": [
+            1400,
+            150,
+            2048,
+            1200
+          ]
+        },
+        {
+          "zone_id": "PERSONAL_CARE",
+          "coords": [
+            1020,
+            250,
+            1360,
+            1450
+          ]
+        },
+        {
+          "zone_id": "BATH_AND_BODY",
+          "coords": [
+            1230,
+            250,
+            1640,
+            1450
+          ]
+        },
+        {
+          "zone_id": "FRAGRANCE",
+          "coords": [
+            1640,
+            250,
+            2048,
+            1450
+          ]
+        }
+      ]
+    },
+    {
+      "camera_id": "CAM_ZONES_02",
+      "type": "zones",
+      "zones": []
+    },
+    {
+      "camera_id": "CAM_BILLING_01",
+      "type": "billing",
+      "zones": [
+        {
+          "zone_id": "BILLING",
+          "coords": [
+            1000,
+            100,
+            1700,
+            900
+          ]
+        }
+      ]
+    }
+  ]
+}
