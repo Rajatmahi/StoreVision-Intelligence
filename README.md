@@ -1,6 +1,8 @@
 <div align="center">
 
-# 🛍️ Store Intelligence System
+# # 🛍️ StoreVision Intelligence
+
+AI-Powered Retail Analytics & CCTV Intelligence Platform
 
 **AI-powered retail analytics that turns CCTV footage into live business intelligence.**
 
@@ -16,13 +18,60 @@
 
 ## 📌 Project Overview
 
-**Store Intelligence System** is a fully end-to-end, real-time retail analytics platform built for the modern physical store. It processes raw CCTV video footage using state-of-the-art computer vision, tracks individual shoppers across store zones, measures dwell time, counts entries and exits, and surfaces all of this as live KPIs on a beautiful analytics dashboard — with **zero manual counting and zero hardware beyond an existing CCTV camera**.
+**StoreVision-Intelligence** StoreVision Intelligence is a real-time retail analytics platform that transforms CCTV events into actionable business intelligence.
+
+The platform combines:
+
+- Computer Vision based shopper tracking
+- Queue monitoring and abandonment analytics
+- Zone heatmaps and dwell analysis
+- Conversion funnel tracking
+- POS transaction correlation
+- Real-time anomaly detection
+- Interactive Streamlit dashboard
+- FastAPI analytics backend
+
+The system enables store managers to understand customer behavior, optimize staffing, reduce checkout congestion, and measure store performance without requiring additional hardware.**zero manual counting and zero hardware beyond an existing CCTV camera**.
 
 > Built as a hackathon project demonstrating the power of combining Computer Vision, a REST API backend, and a live BI dashboard in a single, cohesive Python stack.
 
 ---
 
 ## ✨ Features
+
+## ✨ Features
+
+### 🎥 CCTV Analytics
+- Visitor Detection & Tracking
+- Entry / Exit Monitoring
+- Zone-wise Shopper Movement
+- Dwell Time Analytics
+- Queue Detection
+
+### 📈 Retail Intelligence
+- Revenue Tracking
+- Average Basket Size
+- Conversion Rate Analytics
+- Converted Visitor Tracking
+- Queue Abandonment Metrics
+
+### 🔥 Heatmaps
+- Zone Popularity Analysis
+- Traffic Distribution
+- Store Layout Insights
+
+### 🚨 Anomaly Detection
+- Queue Build-up Alerts
+- Low Conversion Alerts
+- Revenue Anomalies
+- Store Activity Monitoring
+
+### 📊 Dashboard
+- Real-Time KPI Cards
+- Funnel Visualization
+- Heatmaps
+- Alert Feed
+- POS Correlation Metrics
 
 ### 🤖 Computer Vision Pipeline
 - **YOLOv8 Person Detection** — detects only humans, ignoring all other objects
@@ -46,6 +95,23 @@
 - **Auto-refresh every 5 seconds** — no page reload, fully live
 
 ---
+
+## 📊 Dashboard KPIs
+
+- Visitors
+- Revenue
+- Conversion Rate
+- Average Basket Size
+- Queue Abandonment %
+- Queue Depth
+
+Additional Panels:
+
+- Active Alerts
+- Conversion Funnel
+- Zone Heatmap
+- POS Correlation Summary
+- Top Zones Analysis
 
 ## 🏗️ Architecture
 
@@ -101,41 +167,54 @@ For the full interactive Mermaid diagram with component explanations, see [`docs
 
 ## 📁 Folder Structure
 
-```
-purplle2/
+```text
+StoreVision-Intelligence/
 │
-├── app/                        # FastAPI backend
-│   ├── main.py                 # API routes and server entry point
-│   ├── models.py               # Pydantic Event model
-│   ├── database.py             # SQLite connection + table initialisation
-│   └── metrics.py              # Store KPI aggregation logic
+├── app/                               # FastAPI backend services
+│   ├── main.py                        # API entry point & route registration
+│   ├── database.py                    # SQLite connection & initialization
+│   ├── models.py                      # Pydantic models
+│   ├── ingestion.py                   # Event ingestion endpoints
+│   ├── metrics.py                     # KPI & business metrics engine
+│   ├── funnel.py                      # Conversion funnel analytics
+│   ├── anomalies.py                   # Alert & anomaly detection
+│   └── health.py                      # Health check endpoint
 │
-├── pipeline/                   # Computer vision pipeline
-│   ├── detect.py               # Single image person detection
-│   ├── video_detect.py         # Frame-by-frame video detection
-│   ├── track_people.py         # Multi-object tracking with ByteTrack
-│   ├── line_crossing.py        # Entry/Exit event generation + API push
-│   └── zone_analytics.py       # Zone detection + dwell time + API push
+├── pipeline/                          # Computer Vision analytics pipeline
+│   ├── detect.py                      # Person detection using YOLO
+│   ├── video_detect.py                # Frame-by-frame video processing
+│   ├── track_people.py                # Multi-object tracking (ByteTrack)
+│   ├── line_crossing.py               # Entry / Exit event generation
+│   ├── zone_analytics.py              # Zone visit & dwell-time analytics
+│   └── cross_camera.py                # Cross-camera visitor tracking
 │
 ├── dashboard/
-│   └── app.py                  # Streamlit live analytics dashboard
+│   └── app.py                         # Streamlit analytics dashboard
+│
+├── data/
+│   ├── store_intelligence.db          # SQLite database
+│   ├── pos_transactions.csv           # POS transaction data
+│   ├── store_layout.json              # Zone coordinates & store layout
+│   ├── test_video.mp4                 # Sample CCTV footage
+│   ├── tracked_output.mp4             # Tracking output video
+│   ├── line_crossing_output.mp4       # Entry/Exit analytics output
+│   └── zone_analytics_output.mp4      # Zone analytics output
 │
 ├── docs/
-│   └── architecture.md         # System architecture + Mermaid diagram
+│   ├── architecture.md                # System architecture
+│   ├── DESIGN.md                      # Design decisions
+│   ├── CHOICES.md                     # Technical choices & tradeoffs
+│   └── plan.md                        # Development roadmap
 │
-├── data/                       # Input/output video files + SQLite DB
-│   ├── test_video.mp4          # Input CCTV footage
-│   ├── store_intelligence.db   # SQLite database (auto-created)
-│   ├── tracked_output.mp4      # Tracking visualisation output
-│   ├── line_crossing_output.mp4
-│   └── zone_analytics_output.mp4
+├── tests/                             # Future unit/integration tests
 │
-├── tests/                      # Test suite (future)
-├── requirements.txt
-├── docker-compose.yml
+├── requirements.txt                   # Python dependencies
+├── Dockerfile                         # Docker image definition
+├── docker-compose.yml                 # Multi-service deployment
 ├── .gitignore
 └── README.md
 ```
+
 
 ---
 
@@ -147,8 +226,8 @@ purplle2/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/store-intelligence.git
-cd store-intelligence
+git clone https://github.com/your-username/StoreVision-Intelligence.git
+cd StoreVision-Intelligence
 ```
 
 ### 2. Create a virtual environment
@@ -272,6 +351,17 @@ Returns aggregated KPIs for a specific store.
 ---
 
 ## 🔮 Future Improvements
+
+## 🔮 Future Improvements
+
+- Multi-Camera Support
+- Real-Time RTSP Streams
+- Customer Re-identification
+- Predictive Queue Forecasting
+- AI-generated Store Reports
+- PostgreSQL Migration
+- Cloud Deployment
+- Mobile Dashboard
 
 ### Computer Vision
 - [ ] **Re-identification (Re-ID)** — recognise the same shopper across multiple cameras using appearance embeddings
